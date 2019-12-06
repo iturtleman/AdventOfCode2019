@@ -34,23 +34,23 @@ void Main()
 	new
 	{
 		//input =8?1:0
-		TestInput = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 8, 9, 10, 9, 4, 9, 99, 8, 8 }), 1),
-		TestInputf = HasLastOutput(RunProgram(new int[] {NOOP,NOOP, 8, 9, 10, 9, 4, 9, 99, -1, 8 }), 0),
+		TestInput = HasLastOutput(RunProgram(new int[] { NOOP, NOOP, 8, 9, 10, 9, 4, 9, 99, 8, 8 }), 1),
+		TestInputf = HasLastOutput(RunProgram(new int[] { NOOP, NOOP, 8, 9, 10, 9, 4, 9, 99, -1, 8 }), 0),
 		//input <8?1:0
-		TestInput1 = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 7, 9, 10, 9, 4, 9, 99, -1, 8 }), 1),
-		TestInput1f = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 7, 9, 10, 9, 4, 9, 99, 8, 8 }), 0),
+		TestInput1 = HasLastOutput(RunProgram(new int[] { NOOP, NOOP, 7, 9, 10, 9, 4, 9, 99, -1, 8 }), 1),
+		TestInput1f = HasLastOutput(RunProgram(new int[] { NOOP, NOOP, 7, 9, 10, 9, 4, 9, 99, 8, 8 }), 0),
 		//input =8?1:0
-		TestInput2 = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 1108, 8, 8, 3, 4, 3, 99 }), 1),
-		TestInput2f = HasLastOutput(RunProgram(new int[] {NOOP,NOOP, 1108, -1, 8, 3, 4, 3, 99 }), 0),
+		TestInput2 = HasLastOutput(RunProgram(new int[] { NOOP, NOOP, 1108, 8, 8, 3, 4, 3, 99 }), 1),
+		TestInput2f = HasLastOutput(RunProgram(new int[] { NOOP, NOOP, 1108, -1, 8, 3, 4, 3, 99 }), 0),
 		//input <8?1:0
-		TestInput3 = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 1107, 7, 8, 3, 4, 3, 99 }), 1),
-		TestInput3f1 = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 1107, 9, 8, 3, 4, 3, 99 }), 0),
+		TestInput3 = HasLastOutput(RunProgram(new int[] { NOOP, NOOP, 1107, 7, 8, 3, 4, 3, 99 }), 1),
+		TestInput3f1 = HasLastOutput(RunProgram(new int[] { NOOP, NOOP, 1107, 9, 8, 3, 4, 3, 99 }), 0),
 		//input =0?0:1
-		TestInput4 = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 6, 12, 15, 1, 13, 14, 13, 4, 13, 99, 0, 0, 1, 9 }), 0),
-		TestInput4f = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 6, 12, 15, 1, 13, 14, 13, 4, 13, 99, -1, 0, 1, 9 }), 1),
+		TestInput4 = HasLastOutput(RunProgram(new int[] { NOOP, NOOP, 6, 12, 15, 1, 13, 14, 13, 4, 13, 99, 0, 0, 1, 9 }), 0),
+		TestInput4f = HasLastOutput(RunProgram(new int[] { NOOP, NOOP, 6, 12, 15, 1, 13, 14, 13, 4, 13, 99, -1, 0, 1, 9 }), 1),
 		//input =0?0:1
-		TestInput5 = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 1105, 0, 9, 1101, 0, 0, 12, 4, 12, 99, 1 }), 0),
-		TestInput5f = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 1105, -1, 9, 1101, 0, 0, 12, 4, 12, 99, 1 }), 1),
+		TestInput5 = HasLastOutput(RunProgram(new int[] { NOOP, NOOP, 1105, 0, 9, 1101, 0, 0, 12, 4, 12, 99, 1 }), 0),
+		TestInput5f = HasLastOutput(RunProgram(new int[] { NOOP, NOOP, 1105, -1, 9, 1101, 0, 0, 12, 4, 12, 99, 1 }), 1),
 		//put <8?999 =8?1000 >8? 1001
 		TestInput7l = HasLastOutput(RunProgram(new int[] { NOOP,NOOP,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
 1106,0,36,98,0,7,1002,21,125,20,4,20,1105,1,46,104,
@@ -63,7 +63,7 @@ void Main()
 999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99 }), 1001),
 
 	}.Dump();//*/
-	//put 5 as input
+			 //put 5 as input
 	input = File.ReadAllText(@"Puzzle5input.txt").Split(new char[] { ',' }).Select(num => int.Parse(num)).ToArray();
 	RunProgram(input).Dump();
 }
@@ -85,10 +85,10 @@ bool CompareArrays(int[] v1, int[] v2)
 	}
 	return true;
 }
-int NOOP = int.MinValue%100;
+int NOOP = int.MinValue % 100;
 enum OpCode
 {
-	Zero = int.MinValue%100,
+	Zero = int.MinValue % 100,
 	One = 1,
 	Two = 2,
 	Three = 3,
@@ -172,22 +172,16 @@ DE - two-digit opcode,      02 == opcode 2
 					else
 					{
 						int valueIndx = memory[cursorPos + 3];
-						switch (opCode)
-						{
-							case OpCode.One:
-								memory[valueIndx] = val1 + val2;
-								break;
-							case OpCode.Two:
-								memory[valueIndx] = val1 * val2;
-								break;
-							case OpCode.Seven:
-								memory[valueIndx] = val1 < val2 ? 1 : 0;
-								break;
-							case OpCode.Eight:
-								memory[valueIndx] = val1 == val2 ? 1 : 0;
-								break;
-						}
+						if (opCode == OpCode.One)
+							memory[valueIndx] = val1 + val2;
+						if (opCode == OpCode.Two)
+							memory[valueIndx] = val1 * val2;
+						if (opCode == OpCode.Seven)
+							memory[valueIndx] = val1 < val2 ? 1 : 0;
+						if (opCode == OpCode.Eight)
+							memory[valueIndx] = val1 == val2 ? 1 : 0;
 					}
+
 					/*
 					new
 					{
