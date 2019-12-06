@@ -6,7 +6,7 @@ void Main()
 	// Part 1
 	Directory.SetCurrentDirectory(Path.GetDirectoryName(Util.CurrentQueryPath));
 	var input = File.ReadAllText(@"Puzzle2input.txt").Split(new char[] { ',' }).Select(num => int.Parse(num)).ToArray();
-	/*
+	//*
 	new
 	{
 		TestInput = CompareArrays(RunProgram(new int[] { 1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50 }), new int[] { 3500, 9, 10, 70, 2, 3, 11, 0, 99, 30, 40, 50 }),
@@ -17,7 +17,7 @@ void Main()
 		TestInput5 = CompareArrays(RunProgram(new int[] { 1002, 4, 3, 4, 33, 99 }), new int[] { 1002, 4, 3, 4, 99, 99 }),
 		TestInput6 = CompareArrays(RunProgram(new int[] { 1101, 100, -1, 4, 0, 99 }), new int[] { 1101, 100, -1, 4, 99, 99 }),
 		//put 0 as input
-		TestInput7 = CompareArrays(RunProgram(new int[] { 3, 0, 4, 0, 99 }), new int[] { 0, 0, 4, 0, 99 }),
+		//TestInput7 = CompareArrays(RunProgram(new int[] { 3, 0, 4, 0, 99 }), new int[] { 0, 0, 4, 0, 99 }),
 
 	}.Dump();
 	input[1] = 12;
@@ -30,43 +30,42 @@ void Main()
 	//*/
 
 	// Part 2
-	input = File.ReadAllText(@"Puzzle5input.txt").Split(new char[] { ',' }).Select(num => int.Parse(num)).ToArray();
-	/*
+	//*
 	new
 	{
 		//input =8?1:0
-		TestInput = HasLastOutput(RunProgram(new int[] { 0, 0, 8, 9, 10, 9, 4, 9, 99, 8, 8 }), 1),
-		TestInputf = HasLastOutput(RunProgram(new int[] { 0, 0, 8, 9, 10, 9, 4, 9, 99, -1, 8 }), 0),
+		TestInput = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 8, 9, 10, 9, 4, 9, 99, 8, 8 }), 1),
+		TestInputf = HasLastOutput(RunProgram(new int[] {NOOP,NOOP, 8, 9, 10, 9, 4, 9, 99, -1, 8 }), 0),
 		//input <8?1:0
-		TestInput1 = HasLastOutput(RunProgram(new int[] { 0, 0, 7, 9, 10, 9, 4, 9, 99, -1, 8 }), 1),
-		TestInput1f = HasLastOutput(RunProgram(new int[] { 0, 0, 7, 9, 10, 9, 4, 9, 99, 8, 8 }), 0),
+		TestInput1 = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 7, 9, 10, 9, 4, 9, 99, -1, 8 }), 1),
+		TestInput1f = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 7, 9, 10, 9, 4, 9, 99, 8, 8 }), 0),
 		//input =8?1:0
-		TestInput2 = HasLastOutput(RunProgram(new int[] { 0, 0, 1108, 8, 8, 3, 4, 3, 99 }), 1),
-		TestInput2f = HasLastOutput(RunProgram(new int[] { 0, 0, 1108, -1, 8, 3, 4, 3, 99 }), 0),
+		TestInput2 = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 1108, 8, 8, 3, 4, 3, 99 }), 1),
+		TestInput2f = HasLastOutput(RunProgram(new int[] {NOOP,NOOP, 1108, -1, 8, 3, 4, 3, 99 }), 0),
 		//input <8?1:0
-		TestInput3 = HasLastOutput(RunProgram(new int[] { 0, 0, 1107, 7, 8, 3, 4, 3, 99 }), 1),
-		TestInput3f1 = HasLastOutput(RunProgram(new int[] { 0, 0, 1107, 9, 8, 3, 4, 3, 99 }), 0),
+		TestInput3 = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 1107, 7, 8, 3, 4, 3, 99 }), 1),
+		TestInput3f1 = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 1107, 9, 8, 3, 4, 3, 99 }), 0),
 		//input =0?0:1
-		TestInput4 = HasLastOutput(RunProgram(new int[] { 0, 0, 6, 12, 15, 1, 13, 14, 13, 4, 13, 99, 0, 0, 1, 9 }), 0),
-		TestInput4f = HasLastOutput(RunProgram(new int[] { 0, 0, 6, 12, 15, 1, 13, 14, 13, 4, 13, 99, -1, 0, 1, 9 }), 1),
+		TestInput4 = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 6, 12, 15, 1, 13, 14, 13, 4, 13, 99, 0, 0, 1, 9 }), 0),
+		TestInput4f = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 6, 12, 15, 1, 13, 14, 13, 4, 13, 99, -1, 0, 1, 9 }), 1),
 		//input =0?0:1
-		TestInput5 = HasLastOutput(RunProgram(new int[] { 0, 0, 1105, 0, 9, 1101, 0, 0, 12, 4, 12, 99, 1 }), 0),
-		TestInput5f = HasLastOutput(RunProgram(new int[] { 0, 0, 1105, -1, 9, 1101, 0, 0, 12, 4, 12, 99, 1 }), 1),
+		TestInput5 = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 1105, 0, 9, 1101, 0, 0, 12, 4, 12, 99, 1 }), 0),
+		TestInput5f = HasLastOutput(RunProgram(new int[] { NOOP,NOOP, 1105, -1, 9, 1101, 0, 0, 12, 4, 12, 99, 1 }), 1),
 		//put <8?999 =8?1000 >8? 1001
-		TestInput7l = HasLastOutput(RunProgram(new int[] { 0,0,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
+		TestInput7l = HasLastOutput(RunProgram(new int[] { NOOP,NOOP,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
 1106,0,36,98,0,7,1002,21,125,20,4,20,1105,1,46,104,
 999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99 }), 999),
-		TestInput7e = HasLastOutput(RunProgram(new int[] { 0,0,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
+		TestInput7e = HasLastOutput(RunProgram(new int[] { NOOP,NOOP,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
 1106,0,36,98,0,8,1002,21,125,20,4,20,1105,1,46,104,
 999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99 }), 1000),
-		TestInput7g = HasLastOutput(RunProgram(new int[] { 0,0,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
+		TestInput7g = HasLastOutput(RunProgram(new int[] { NOOP,NOOP,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
 1106,0,36,98,0,9,1002,21,125,20,4,20,1105,1,46,104,
 999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99 }), 1001),
 
 	}.Dump();//*/
 	//put 5 as input
+	input = File.ReadAllText(@"Puzzle5input.txt").Split(new char[] { ',' }).Select(num => int.Parse(num)).ToArray();
 	RunProgram(input).Dump();
-
 }
 
 bool HasLastOutput(int[] v1, int lastOutput)
@@ -86,10 +85,10 @@ bool CompareArrays(int[] v1, int[] v2)
 	}
 	return true;
 }
-
+int NOOP = int.MinValue%100;
 enum OpCode
 {
-	Zero = 0,
+	Zero = int.MinValue%100,
 	One = 1,
 	Two = 2,
 	Three = 3,
@@ -123,10 +122,12 @@ Dictionary<OpCode, int> Oplengths = new Dictionary<OpCode, int>(){
 // Define other methods and classes here
 int[] RunProgram(int[] memory)
 {
+	var InitialMem = memory.ToList();
 	int cursorPos = 0;
-	while (cursorPos < memory.Length)
+	var preCursorPos = cursorPos;
+	while (memory[cursorPos] != (int)OpCode.Exit)
 	{
-		var preCursorPos=cursorPos;
+		preCursorPos = cursorPos;
 		/*
 ABCDE
  1002
@@ -141,104 +142,109 @@ DE - two-digit opcode,      02 == opcode 2
 
 		//keep last two digits
 		var opCode = (OpCode)(FullOpCode % 100);
-		var param1Mode = (ParameterModes)(FullOpCode / 100 % 10);
-		var param2Mode = (ParameterModes)(FullOpCode / 1000 % 10);
-		var param3Mode = (ParameterModes)(FullOpCode / 10000 % 10);
-
-		if (opCode == OpCode.Exit)
-		{
-			return memory;
-		}
-		bool hasFirst = cursorPos + 1 < memory.Length;
-		int first = hasFirst ? memory[cursorPos + 1] : 0;
-		bool hasSecond = cursorPos + 2 < memory.Length;
-		int second = hasSecond ? memory[cursorPos + 2] : 0;
-		bool hasValueIndx = cursorPos + 3 < memory.Length && memory[cursorPos + 3] < memory.Length;
-		int valueIndx = hasValueIndx ? memory[cursorPos + 3] : 0;
-
-		var val1 = param1Mode == ParameterModes.Position && hasFirst && first < memory.Length && first > 0 ? memory[first] : first;
-		var val2 = param2Mode == ParameterModes.Position && hasSecond && second < memory.Length && second > 0 ? memory[second] : second;
 		var instructionModified = false;
-		if (opCode == OpCode.One && hasFirst && hasSecond && hasValueIndx)
+		switch (opCode)
 		{
-			memory[valueIndx] = val1 + val2;
-		}
-		else if (opCode == OpCode.Two && hasFirst && hasSecond && hasValueIndx)
-		{
-			memory[valueIndx] = val1 * val2;
-		}
-		else if (opCode == OpCode.Three && hasFirst)
-		{
-			int val;
-			while (true)
-			{
-				try
+			case OpCode.Zero:
+				//Console.WriteLine("skip");
+				break;
+			case OpCode.One:
+			case OpCode.Two:
+			case OpCode.Five:
+			case OpCode.Six:
+			case OpCode.Seven:
+			case OpCode.Eight:
 				{
-					val = Int32.Parse(Console.ReadLine());
+					var param1Mode = (ParameterModes)(FullOpCode / 100 % 10);
+					var param2Mode = (ParameterModes)(FullOpCode / 1000 % 10);
+
+					int first = memory[cursorPos + 1];
+					int second = memory[cursorPos + 2];
+
+					var val1 = param1Mode == ParameterModes.Position ? memory[first] : first;
+					var val2 = param2Mode == ParameterModes.Position ? memory[second] : second;
+					if (opCode == OpCode.Five && val1 != 0
+						|| opCode == OpCode.Six && val1 == 0)
+					{
+						cursorPos = val2;
+						instructionModified = true;
+					}
+					else
+					{
+						int valueIndx = memory[cursorPos + 3];
+						switch (opCode)
+						{
+							case OpCode.One:
+								memory[valueIndx] = val1 + val2;
+								break;
+							case OpCode.Two:
+								memory[valueIndx] = val1 * val2;
+								break;
+							case OpCode.Seven:
+								memory[valueIndx] = val1 < val2 ? 1 : 0;
+								break;
+							case OpCode.Eight:
+								memory[valueIndx] = val1 == val2 ? 1 : 0;
+								break;
+						}
+					}
+					/*
+					new
+					{
+						opCode = opCode,
+						param1Mode = param1Mode,
+						param2Mode = param2Mode,
+						cursorPos = cursorPos,
+						preCursorPos = preCursorPos,
+						OpSkip = Oplengths[opCode],
+						first = first,
+						second = second,
+						val1 = val1,
+						val2 = val2,
+						memorycursorPos = cursorPos < memory.Length ? memory[cursorPos].ToString() : $"Op code is {opCode}",
+						memory = string.Join(",", memory),
+					}.Dump();
+					//*/
 					break;
 				}
-				catch (Exception)
+			case OpCode.Three:
 				{
-					//this must be an int but keep trying until it is
+					int val;
+					while (true)
+					{
+						try
+						{
+							val = Int32.Parse(Console.ReadLine());
+							break;
+						}
+						catch (Exception)
+						{
+							//this must be an int but keep trying until it is
+						}
+					}
+					memory[memory[cursorPos + 1]] = val;
+					break;
 				}
-			}
-			memory[first] = val;
+			case OpCode.Four:
+				{
+					var first = memory[cursorPos + 1];
+					var param1Mode = (ParameterModes)(FullOpCode / 100 % 10);
+					WriteToConsole(param1Mode == ParameterModes.Position ? memory[first] : first);
+					break;
+				}
+			default:
+				throw new Exception($@"Unexpected opCode {opCode}");
 		}
-		else if (opCode == OpCode.Four && hasFirst)
-		{
-			WriteToConsole(param1Mode == ParameterModes.Position ? memory[first] : first);
-		}
-		else if (opCode == OpCode.Five && hasFirst && hasSecond)
-		{
-			if (val1 != 0)
-			{
-				cursorPos = val2;
-				instructionModified = true;
-			}
-		}
-		else if (opCode == OpCode.Six && hasFirst && hasSecond)
-		{
-			if (val1 == 0)
-			{
-				cursorPos = val2;
-				instructionModified = true;
-			}
-		}
-		else if (opCode == OpCode.Seven && hasFirst && hasSecond && hasValueIndx)
-		{
-			memory[valueIndx] = val1 < val2 ? 1 : 0;
-		}
-		else if (opCode == OpCode.Eight && hasFirst && hasSecond && hasValueIndx)
-		{
-			memory[valueIndx] = val1 == val2 ? 1 : 0;
-		}
-		else if (opCode == OpCode.Zero)
-		{ }
-		else
-			throw new Exception($@"Unexpected opCode {opCode}");
-		//*
+
+		/*
 		new
 		{
 			opCode = opCode,
-			param1Mode = param1Mode,
-			param2Mode = param2Mode,
-			param3Mode = param3Mode,
 			cursorPos = cursorPos,
 			preCursorPos = preCursorPos,
-			OpSkip=Oplengths[opCode],
-			first = first,
-			second = second,
-			valueIndx = valueIndx,
-			val1 = val1,
-			val2 = val2,
-			memoryValueIndx = hasValueIndx ? memory[valueIndx].ToString() : "nope",
-			memorycursorPos = cursorPos <memory.Length?memory[cursorPos].ToString():$"Op code is {opCode}",
-			memory225 = memory[225],
-			memory6 = memory[6],
-			memory0 = memory[0],
-			memory238 = memory[238],
-			memory104 = memory[104],
-			memory = memory,
+			OpSkip = Oplengths[opCode],
+			memorycursorPos = cursorPos < memory.Length ? memory[cursorPos].ToString() : $"Op code is {opCode}",
+			memory = string.Join(",", memory),
 		}.Dump();
 		//*/
 		if (!instructionModified)
